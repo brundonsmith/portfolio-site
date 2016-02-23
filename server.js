@@ -31,6 +31,12 @@ app.set('view cache', false);
 app.get('/', function(request, response) {
   response.render('index.html');
 });
+app.get('/projects', function(request, response) {
+  response.render('projects.html');
+});
+app.get('/contact', function(request, response) {
+  response.render('contact.html');
+});
 
 
 
