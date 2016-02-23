@@ -4,33 +4,62 @@
 	{% include "./partials/head.html" %}
 
 	<!-- Body -->
-	<body>
+	<body id="index">
 
 		<!-- Navigation -->
 		{% include "./partials/nav.html" %}
 
 		<!-- Hero -->
-		<div class="section hero" style="min-height:80vh;">
+		<div class="section hero" style="min-height:70vh;">
 			<div class="container">
 				<div class="triangles-container"></div>
-				<h1>
+				<h1 class="fadein slidein-left staggered">
 					brandon smith
 				</h1>
-				<h2>
-					custom websites
+				<h2 class="fadein slidein-left staggered">
+					custom-built websites
 				</h2>
+				<h4 class="fadein delay-1s">
+					because your business isn't a template.
+				</h4>
 			</div>
 		</div>
 
 
 		<!-- Main content -->
-		<div class="section" style="background-color:#eee; height:600px;">
+		<div class="section" style="background-color:#fafafa;">
 
 			<!-- Local -->
 			<div class="container">
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-				</p>
+				<h2>
+					examples of my work
+				</h2>
+
+				<div class="projects-container">
+
+					<a class="project-link fadein staggered" href="http://arcane-hamlet-90733.herokuapp.com/" target="_blank" style="
+															background-image:url('/img/crate-thumbnail.png')">
+						<div class="overlay">
+							<span class="title">Crate</span><br>
+							<span class="description">Info site for a Dallas-based cultural magazine</span>
+						</div>
+					</a>
+					<a class="project-link fadein staggered" href="http://beansandbrews.brandonsmith.ninja" target="_blank" style="
+															background-image:url('/img/beans-and-brews-thumbnail.png')">
+						<div class="overlay">
+							<span class="title">Beans and Brews</span><br>
+							<span class="description">A splash site for a fictional Austin coffeehouse/bar</span>
+						</div>
+					</a>
+					<a class="project-link fadein staggered" href="#" style="
+															background-image:url('//material-design.storage.googleapis.com/publish/material_v_4/material_ext_publish/0B6Okdz75tqQsam1RaTNtSFZ1NXM/style_imagery_integration_scale2.png')">
+						<div class="overlay">
+							<span class="title">My Thing</span><br>
+							<span class="description">This is my thing</span>
+						</div>
+					</a>
+
+			   </div>
 			</div>
 		</div>
 
