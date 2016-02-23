@@ -1,5 +1,5 @@
 // parameters
-var numTriangles = 100;
+var numTriangles = 120;
 var squareSize = 30;
 var rotations = [
 	'top-left',
