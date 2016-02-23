@@ -1,0 +1,74 @@
+* {
+	font-family: 'Poppins', sans-serif;
+}
+.section {
+	min-height:100vh;
+}
+.section.hero {
+	text-align:center;
+}
+.section.hero h1 {
+	display:inline-block;
+	font-size:72px;
+	font-weight:normal;
+	margin-top:200px;
+}
+
+.section.nav-section {
+	min-height:inherit;
+	height:50px;
+	box-shadow: 0px 5px 15px lightgray;
+}
+.section.nav-section .nav-link {
+	font-family: 'Poppins', sans-serif;
+	font-weight:lighter;
+	font-size:26px;
+	padding:0 15px;
+}
+
+
+
+/* triangles */
+.triangles-container {
+	position:absolute;
+	top:60vh;
+	left:80vw;
+	z-index:-10;
+}
+.triangle {
+	display:inline-block;
+	width:0px;
+	height:0px;
+	transition:0.3s ease-in-out transform;
+	backface-visibility: hidden;
+	transform-origin: 0% 0%;
+	position:absolute;
+}
+
+.triangle.top-left {
+	transform:rotate3d(0, 1, 0, 180deg) rotate3d(0, 0, 1, 180deg);
+}
+.triangle.top-left.rotated {
+	transform:rotate3d(0, 0, 1, 180deg);
+}
+
+.triangle.top-right {
+	transform:rotate3d(0, 2, 0, 90deg) rotate3d(0, 0, -1, 90deg);
+}
+.triangle.top-right.rotated {
+	transform:rotate3d(0, 0, -1, 90deg);
+}
+
+.triangle.bottom-left {
+	transform:rotate3d(0, 2, 0, 90deg) rotate3d(0, 0, 1, 90deg);
+}
+.triangle.bottom-left.rotated {
+	transform:rotate3d(0, 0, 1, 90deg);
+}
+
+.triangle.bottom-right {
+	transform:rotate3d(0, 1, 0, 180deg);
+}
+.triangle.bottom-right.rotated {
+	transform:rotate3d(0, 0, 0, 180deg);
+}
