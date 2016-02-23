@@ -1,17 +1,32 @@
 * {
 	font-family: 'Poppins', sans-serif;
 }
+h1,
+h2,
+h3,
+h4 {
+	position:relative;
+	z-index:10;
+}
 .section {
-	min-height:100vh;
 }
 .section.hero {
-	text-align:center;
 }
 .section.hero h1 {
-	display:inline-block;
-	font-size:72px;
+	display:block;
+	text-align:left;
+	font-size:90px;
 	font-weight:normal;
-	margin-top:200px;
+	margin-top:180px;
+	color: #555;
+}
+.section.hero h2 {
+	display:block;
+	text-align:left;
+	font-size:48px;
+	font-weight:lighter;
+	color: #555;
+
 }
 
 .section.nav-section {
@@ -31,9 +46,8 @@
 /* triangles */
 .triangles-container {
 	position:absolute;
-	top:60vh;
-	left:80vw;
-	z-index:-10;
+	top:65vh;
+	left:85vw;
 }
 .triangle {
 	display:inline-block;
