@@ -23,10 +23,10 @@
 					say hi :)
 				</h2>
 
-				<form class="contact-form">
-					<input type="text" placeholder="name">
-					<input type="text" placeholder="email address">
-					<textarea placeholder="what would you like to discuss?" rows="8"></textarea>
+				<form class="contact-form" action="/contact" method="post">
+					<input name="name" type="text" placeholder="name" required="required">
+					<input name="email" type="email" placeholder="email address" required="required">
+					<textarea name="message" placeholder="what would you like to discuss?" rows="8" required="required"></textarea>
 					<input type="submit" value="off we go">
 				</form>
 			</div>
