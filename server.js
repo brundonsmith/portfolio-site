@@ -41,6 +41,10 @@ app.get('/projects', function(request, response) {
 app.get('/contact', function(request, response) {
 	response.render('contact.html');
 });
+/*
+app.get('/thank-you', function(request, response) {
+	response.render('thank-you.html');
+});*/
 
 app.post('/contact', function(request, response) {
 	console.log(JSON.stringify(request.body));
@@ -56,7 +60,7 @@ app.post('/contact', function(request, response) {
 	        return console.log(error);
 	    }
 	    console.log('Message sent');
-		response.send();
+		response.render('thank-you.html');
 	});
 });
 
