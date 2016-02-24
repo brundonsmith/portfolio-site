@@ -88,6 +88,35 @@ h2 {
 	color:rgb(139, 77, 172);
 }
 
+.contact-form {
+	max-width:400px;
+	margin:0 auto;
+	margin-top:60px;
+}
+.contact-form input[type="text"],
+.contact-form textarea {
+	margin-bottom: 20px;
+	width:100%;
+	font-size:20px;
+	padding:10px;
+	-webkit-appearance:none;
+	border:1px solid #dadada;
+	resize:vertical;
+}
+.contact-form input[type="submit"] {
+	width:100%;
+	font-size:20px;
+	padding:10px;
+	-webkit-appearance:none;
+	border:none;
+    color: #555;
+	background-color:white;
+	box-shadow:0px 0px 15px lightgray;
+	cursor: pointer;
+}
+.contact-form input[type="submit"]:hover {
+	box-shadow:0px 0px 30px lightgray;
+}
 
 /* triangles */
 .triangles-container {
@@ -101,6 +130,10 @@ h2 {
 #projects .triangles-container {
 	top: calc(50% + 50px);
 	left: calc(50% - 500px);
+}
+#contact .triangles-container {
+	top: calc(50% + 150px);
+	left: calc(50% + 150px);
 }
 .triangle {
 	display:inline-block;

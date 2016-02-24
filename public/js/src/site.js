@@ -37,7 +37,7 @@ var generateTriangles = function(parameters) {
 		(function(element, pos){
 			setTimeout(function(){
 				$(element).addClass('rotated');
-			}, distanceFromCenter(pos) * 5 + (Math.random() - 0.5) * 300);
+			}, distanceFromCenter(pos) * parameters.speedFactor + (Math.random() - 0.5) * 300);
 		}(newTriangle, position));
 
 		$('.triangles-container').append(newTriangle);
@@ -86,6 +86,7 @@ if($('#index').length > 0) {
 			numTriangles: 100,
 			squareSize: 30,
 			radius: 300,
+			speedFactor: 3,
 			rotations: [
 				'top-left',
 				'top-right',
@@ -108,6 +109,7 @@ if($('#projects').length > 0) {
 			numTriangles: 120,
 			squareSize: 30,
 			radius: 500,
+			speedFactor: 3,
 			rotations: [
 				'top-left',
 				'top-right',
@@ -127,9 +129,10 @@ if($('#projects').length > 0) {
 
 if($('#contact').length > 0) {
 	generateTriangles({
-		numTriangles: 120,
+		numTriangles: 200,
 		squareSize: 30,
-		radius: 500,
+		radius: 600,
+		speedFactor: 3,
 		rotations: [
 			'top-left',
 			'top-right',
