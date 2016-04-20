@@ -226,6 +226,20 @@ h2 {
     box-shadow: 2px 2px 15px 5px rgba(0, 0, 0, 0.2);
     transform:scale(1.03, 1.03);
 }
+.project-link.in-progress::after {
+	content: 'still working on this one!';
+	position:absolute;
+	display:block;
+	width:100%;
+	height:100%;
+	padding:5px;
+    color: #FFD600;
+    text-shadow: -1px -1px 1px #FFF, 1px -1px 1px #FFF, -1px 1px 1px #FFF, 1px 1px 1px #FFF;
+	line-height:236px;
+	vertical-align:middle;
+	text-align: center;
+	background-color:rgba(255, 248, 225, 0.5);
+}
 .project-link .overlay {
     width:100%;
     height:40%;
