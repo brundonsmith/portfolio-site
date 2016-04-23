@@ -227,7 +227,7 @@ h2 {
     transform:scale(1.03, 1.03);
 }
 .project-link.in-progress::after {
-	content: 'still working on this one!';
+	content: 'in progress';
 	position:absolute;
 	display:block;
 	width:100%;
