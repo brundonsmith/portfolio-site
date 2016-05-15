@@ -47,7 +47,6 @@ app.get('/thank-you', function(request, response) {
 });*/
 
 app.post('/contact', function(request, response) {
-	console.log(JSON.stringify(request.body));
 	var mailOptions = {
 	    from: request.body.name + ' ' + '<' + request.body.email + '>', // sender address
 	    to: 'brandon.smith.945@gmail.com', // list of receivers
