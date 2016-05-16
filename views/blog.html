@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!-- Head -->
+	{% include "./partials/head.html" %}
+	<head>
+		<title>Brandon Smith - Blog</title>
+	</head>
+
+	<!-- Body -->
+	<body id="blog">
+
+		<!-- Navigation -->
+		{% include "./partials/nav.html" %}
+
+		<!-- Main content -->
+		<div class="section" style="padding: 90px 0px; min-height:calc(100vh - 70px - 66px);">
+
+			<!-- Local -->
+			<div class="container">
+				<div class="triangles-container"></div>
+
+				<h2 class="fadein">
+					your site could be on this list
+				</h2>
+
+				<div class="projects-container">
+
+					<a class="project-link fadein staggered in-progress" href="https://young-lake-31159.herokuapp.com/" target="_blank" style="
+															background-image:url('/img/fiddlers-green-thumbnail.png')">
+						<div class="overlay">
+							<span class="title">Fiddler's Green</span><br>
+							<span class="description">Irish music shop in Austin, TX</span>
+						</div>
+					</a>
+					<a class="project-link fadein staggered in-progress" href="http://arcane-hamlet-90733.herokuapp.com/" target="_blank" style="
+															background-image:url('/img/crate-thumbnail.png')">
+						<div class="overlay">
+							<span class="title">Crate</span><br>
+							<span class="description">A Dallas-based cultural magazine</span>
+						</div>
+					</a>
+					<a class="project-link fadein staggered" href="http://catch.brandonsmith.ninja" target="_blank" style="
+															background-image:url('/img/catch-thumbnail.png')">
+						<div class="overlay">
+							<span class="title">Catch</span><br>
+							<span class="description">A web app for transferring files - no account required</span>
+						</div>
+					</a>
+					<a class="project-link fadein staggered" href="http://beansandbrews.brandonsmith.ninja" target="_blank" style="
+															background-image:url('/img/beans-and-brews-thumbnail.png')">
+						<div class="overlay">
+							<span class="title">Beans and Brews</span><br>
+							<span class="description">A splash site for a fictional Austin coffeehouse/bar</span>
+						</div>
+					</a>
+					<!--
+					<a class="project-link fadein staggered" href="#" style="
+															background-image:url('//material-design.storage.googleapis.com/publish/material_v_4/material_ext_publish/0B6Okdz75tqQsam1RaTNtSFZ1NXM/style_imagery_integration_scale2.png')">
+						<div class="overlay">
+							<span class="title">My Thing</span><br>
+							<span class="description">This is my thing</span>
+						</div>
+					</a>-->
+
+			   </div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		{% include "./partials/footer.html" %}
+	</body>
+</html>

@@ -4,15 +4,26 @@ var bodyParser = require('body-parser');
 var swig = require('swig');
 var nodemailer = require('nodemailer');
 var directTransport = require('nodemailer-direct-transport');
-/*
 var mongoose = require('mongoose');
-*/
+var materialCms = require('../material-cms');
 
 // database
-/*
-mongoose.connect('mongodb://localhost:27017');
-var models = require('./model/File');
-*/
+if(process.env.db_user && process.env.db_pass) {
+  mongoose.connect('mongodb://' + process.env.db_user + ':' + process.env.db_pass + '@ds023432.mlab.com:23432/portfolio');
+} else {
+  console.error('No database credentials specified. Use environment variables db_user and db_pass.');
+}
+var Post = require('./models/Post');
+var Project = require('./models/Project');
+
+// CMS
+materialCms.init(
+  'ds023432.mlab.com:23432/portfolio',
+  {
+    Post: Post.PostSchema,
+    Project: Project.ProjectSchema
+  }
+);
 
 // application
 var app = express();
@@ -33,13 +44,40 @@ var transporter = nodemailer.createTransport(directTransport({}));
 
 // pages
 app.get('/', function(request, response) {
-	response.render('index.html');
+
+    Project.Project
+      .find({})
+      .sort({ date: 'descending' })
+      .limit(3)
+      .exec(function(err, result) {
+        response.render('index.html', { projects: result })
+      });
+
 });
 app.get('/projects', function(request, response) {
-	response.render('projects.html');
+
+  Project.Project
+    .find({})
+    .sort({ inProgress: 'descending', date: 'descending' })
+    .exec(function(err, result) {
+      response.render('projects.html', { projects: result })
+    });
+
 });
 app.get('/contact', function(request, response) {
 	response.render('contact.html');
+});
+app.get('/blog', function(request, response) {
+
+  Post.Post
+    .find({})
+    .limit(5)
+    .sort({ date: 'descending' })
+    .exec(function(err, result) {
+
+      response.render('blog.html', { posts: result })
+    });
+
 });
 /*
 app.get('/thank-you', function(request, response) {
@@ -62,8 +100,6 @@ app.post('/contact', function(request, response) {
 		response.render('thank-you.html');
 	});
 });
-
-
 
 
 // start
