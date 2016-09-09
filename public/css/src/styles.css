@@ -60,30 +60,12 @@ h2 {
 .section.nav-section .nav-link.link-home {
 	color: rgb(249, 160, 67);
 }
-/*
-.section.nav-section .nav-link.link-home:hover {
-	color: white;
-	background-color: rgba(249, 160, 67, 0.5);
-	box-shadow: 0px 0px 15px rgba(249, 160, 67, 0.5);
-}*/
-.section.nav-section .nav-link.link-projects {
+.section.nav-section .nav-link.link-posts-projects {
 	color: rgb(139, 77, 172);
 }
-/*
-.section.nav-section .nav-link.link-projects:hover {
-	color: white;
-	background-color: rgba(139, 77, 172, 0.5);
-	box-shadow: 0px 0px 25px rgba(139, 77, 172, 0.5);
-}*/
 .section.nav-section .nav-link.link-contact {
 	color: rgb(25, 114, 196);
 }
-/*
-.section.nav-section .nav-link.link-contact:hover {
-	color: white;
-	background-color: rgba(25, 114, 196, 0.5);
-	box-shadow: 0px 0px 15px rgba(25, 114, 196, 0.5);
-}*/
 
 .container.nav-container {
 	min-height: 70px;
@@ -271,6 +253,7 @@ h2 {
 }
 .footer-links a {
     display:inline-block;
+    color:inherit;
 }
 
 
