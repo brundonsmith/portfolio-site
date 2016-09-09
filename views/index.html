@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<!-- Head -->
-	{% include "./partials/head.html" %}
+	{{> head }}
 	<head>
 		<title>Brandon Smith - Custom Websites</title>
 	</head>
@@ -10,7 +10,7 @@
 	<body id="index">
 
 		<!-- Navigation -->
-		{% include "./partials/nav.html" %}
+  	{{> nav }}
 
 		<!-- Hero -->
 		<div class="section hero" style="min-height:70vh;">
@@ -81,6 +81,6 @@
 		</div>
 
 		<!-- Footer -->
-		{% include "./partials/footer.html" %}
+  	{{> footer }}
 	</body>
 </html>

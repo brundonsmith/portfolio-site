@@ -1,18 +1,14 @@
 // express
 var express = require('express');
 var bodyParser = require('body-parser');
-var swig = require('swig');
 var nodemailer = require('nodemailer');
 var directTransport = require('nodemailer-direct-transport');
-/*
 var mongoose = require('mongoose');
-*/
+var handlebars  = require('express-handlebars');
 
 // database
-/*
-mongoose.connect('mongodb://localhost:27017');
-var models = require('./model/File');
-*/
+//mongoose.connect('mongodb://localhost:27017');
+var models = require('./models/Post');
 
 // application
 var app = express();
@@ -23,35 +19,32 @@ app.use(express.static('public', { maxAge: oneDay }));
 app.use(bodyParser.urlencoded());
 
 // templating engine
-swig.setDefaults({ cache: false });
-app.engine('html', swig.renderFile);
+app.engine('html', handlebars( {
+  extname: '.html',
+  partialsDir: 'views/partials/'
+} ));
 app.set('view engine', 'html');
-app.set('view cache', false);
+app.set('views', 'views/');
 
 // email
 var transporter = nodemailer.createTransport(directTransport({}));
 
 // pages
-app.get('/', function(request, response) {
-	response.render('index.html');
+app.get('/', function(req, res) {
+	res.render('index');
 });
-app.get('/projects', function(request, response) {
-	response.render('projects.html');
+app.get('/projects', function(req, res) {
+	res.render('projects');
 });
-app.get('/contact', function(request, response) {
-	response.render('contact.html');
+app.get('/contact', function(req, res) {
+	res.render('contact');
 });
-/*
-app.get('/thank-you', function(request, response) {
-	response.render('thank-you.html');
-});*/
-
-app.post('/contact', function(request, response) {
+app.post('/contact', function(req, res) {
 	var mailOptions = {
-	    from: request.body.name + ' ' + '<' + request.body.email + '>', // sender address
+	    from: req.body.name + ' ' + '<' + req.body.email + '>', // sender address
 	    to: 'brandon.smith.945@gmail.com', // list of receivers
 	    subject: 'Portfolio Contact', // Subject line
-	    text: request.body.message // plaintext body
+	    text: req.body.message // plaintext body
 	};
 
 	transporter.sendMail(mailOptions, function(error, info){
@@ -59,11 +52,9 @@ app.post('/contact', function(request, response) {
 	        return console.log(error);
 	    }
 	    console.log('Message sent');
-		response.render('thank-you.html');
+		res.render('thank-you');
 	});
 });
-
-
 
 
 // start
