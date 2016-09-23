@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "npm run css | npm run watch:css | npm start",
-    "postinstall": "npm run css",
+    "postinstall": "mkdir -p public/css ; npm run css",
 
     "watch:css": "onchange 'sass/**.scss' -- npm run css",
     "css": "npm run sass ; npm run concat-css",
