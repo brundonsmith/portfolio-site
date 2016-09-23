@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!-- Head -->
+	{% include "head.html" %}
+	<head>
+		<title>Brandon Smith - Posts and Projects</title>
+	</head>
+
+	<!-- Body -->
+	<body id="projects">
+
+		<!-- Navigation -->
+  	{% include "nav.html" %}
+
+		<!-- Main content -->
+		<div class="section" style="padding: 70px 0px; min-height:calc(100vh - 70px - 66px);">
+
+			<!-- Local -->
+			<div class="container">
+				<div class="triangles-container"></div>
+
+				<h2 class="fadein">
+					posts and projects
+				</h2>
+
+				<div class="projects-container">
+          {% for post in posts %}
+            {% include "post-large.html" %}
+          {% endfor %}
+			   </div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+  	{% include "footer.html" %}
+	</body>
+</html>

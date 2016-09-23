@@ -1,4 +1,4 @@
-var fadeLinks = document.getElementsByTagName('a');
+var fadeLinks = document.querySelectorAll('a:not([target="_blank"])');
 for(var i = 0; i < fadeLinks.length; i++){
 	var elem = fadeLinks[i];
 	elem.onclick = function(){// Don't go to the next page yet.

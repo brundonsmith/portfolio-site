@@ -4,7 +4,15 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "npm run css | npm run watch:css | npm start",
+    "postinstall": "npm run css",
+
+    "watch:css": "onchange 'sass/**.scss' -- npm run css",
+    "css": "npm run sass ; npm run concat-css",
+
+    "sass": "node-sass --output-style compressed -o sass sass",
+    "concat-css": "find sass/ -name '*.css' -exec cat {} \\; > public/css/site.min.css"
   },
   "repository": {
     "type": "git",
@@ -15,10 +23,17 @@
   "homepage": "https://bitbucket.org/brundolf/portfolio-2.0#readme",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "cssmin": "^0.4.3",
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",
+    "minifier": "^0.8.0",
+    "moment": "^2.15.1",
     "mongoose": "^4.6.0",
+    "node-sass": "^3.10.0",
     "nodemailer": "^2.2.1",
     "nodemailer-direct-transport": "^3.0.6",
+    "nunjucks": "^2.5.2",
+    "onchange": "^3.0.2",
+    "thin-cms": "^0.2.0"
   }
 }

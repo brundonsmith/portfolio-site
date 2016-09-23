@@ -1,9 +1,9 @@
 
+@import 'variables.scss';
+
 /* Native tags */
 * {
 	box-sizing: border-box;
-	font-family: 'arial';
-
 	transition-duration: 0.2s;
 	transition-timing-function: ease-out;
 }

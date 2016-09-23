@@ -1,0 +1,47 @@
+
+@import '../variables.scss';
+
+#contact {
+
+  .triangles-container {
+  	top: calc(50% + 150px);
+  	left: calc(50% + 150px);
+
+    @media (max-width:900px) {
+      top: calc(50% + 250px);
+      left: calc(50% + 250px);
+    }
+  }
+  .contact-form {
+  	max-width:400px;
+  	margin:0 auto;
+  	margin-top:60px;
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+    	margin-bottom: 20px;
+    	width:100%;
+    	font-size:20px;
+    	padding:10px;
+    	-webkit-appearance:none;
+    	border:1px solid #dadada;
+    	resize:vertical;
+    }
+    input[type="submit"] {
+    	width:100%;
+    	font-size:20px;
+    	padding:10px;
+    	-webkit-appearance:none;
+    	border:none;
+      color: #555;
+    	background-color:white;
+    	box-shadow:0px 0px 15px lightgray;
+    	cursor: pointer;
+
+      &:hover {
+      	box-shadow:0px 0px 30px lightgray;
+      }
+    }
+  }
+}

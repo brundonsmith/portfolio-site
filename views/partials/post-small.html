@@ -1,0 +1,14 @@
+<a
+    class="post-small fadein staggered {% if not post.imageUrl %}no-image{% endif %}"
+    {% if post.type == "project-link" or post.type == "external-blog-post" %}
+      href="{{ post.externalUrl }}"
+      target="_blank"
+    {% elif post.type == "blog-post" %}
+      href="/post/{{ post.titleSlug }}"
+    {% endif %}
+    style="background-image:url('{{ post.imageUrl }}')">
+  <div class="overlay">
+    <div class="title">{{ post.title }}</div>
+    <div class="description">{{ post.body }}</div>
+  </div>
+</a>

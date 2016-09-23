@@ -1,0 +1,18 @@
+<div class="post-large">
+  <div class="info">
+    <div class="date">{{ post.date | postDate }}</div>
+    <a class="title"
+        {% if post.type == "project-link" or post.type == "external-blog-post" %}
+          href="{{ post.externalUrl }}"
+          target="_blank"
+        {% elif post.type == "blog-post" %}
+          href="/post/{{ post.titleSlug }}"
+        {% endif %}
+      >{{ post.title }}</a>
+    <div class="description">{{ post.body }}</div>
+  </div>
+
+  {% if not post.imageUrl == "" %}
+  <div class="thumbnail" style="background-image:url('{{ post.imageUrl }}')"></div>
+  {% endif %}
+</div>

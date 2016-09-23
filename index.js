@@ -4,10 +4,15 @@ var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
 var directTransport = require('nodemailer-direct-transport');
 var mongoose = require('mongoose');
-var handlebars  = require('express-handlebars');
+var nunjucks = require('nunjucks');
+var cms = require('thin-cms');
+var moment = require('moment');
 
 // database
-//mongoose.connect('mongodb://localhost:27017');
+mongoose.connect(process.env.db_url, {
+  user: process.env.db_user,
+  pass: process.env.db_pass
+});
 var models = require('./models/Post');
 
 // application
@@ -19,25 +24,63 @@ app.use(express.static('public', { maxAge: oneDay }));
 app.use(bodyParser.urlencoded());
 
 // templating engine
-app.engine('html', handlebars( {
-  extname: '.html',
-  partialsDir: 'views/partials/'
-} ));
-app.set('view engine', 'html');
-app.set('views', 'views/');
+nunjucks.configure(
+  [ 'views', 'views/partials' ],
+  {
+    autoescape: true,
+    noCache: true,
+    express: app
+  }
+)
+.addFilter('postDate', function(date) {
+  return moment(date).format('MMMM Do, YYYY');
+});
 
 // email
 var transporter = nodemailer.createTransport(directTransport({}));
 
 // pages
 app.get('/', function(req, res) {
-	res.render('index');
+  models.Post
+    .find({
+      isPublished: true
+    })
+    .sort({ date: -1 })
+    .limit(3)
+    .exec(function(err, results){
+
+      if(err) {
+        res.status(500).send('There was an error'); // TODO: 404/500 pages
+      } else {
+      	res.render('index.html', {
+          recentPosts: results
+        });
+      }
+
+    });
 });
-app.get('/projects', function(req, res) {
-	res.render('projects');
+app.get('/posts-and-projects', function(req, res) {
+
+  models.Post
+    .find({
+      isPublished: true
+    })
+    .sort({ date: -1 })
+    .exec(function(err, results){
+
+      if(err) {
+        res.status(500).send('There was an error'); // TODO: 404/500 pages
+      } else {
+      	res.render('posts-and-projects.html', {
+          posts: results
+        });
+      }
+
+    });
+
 });
 app.get('/contact', function(req, res) {
-	res.render('contact');
+	res.render('contact.html');
 });
 app.post('/contact', function(req, res) {
 	var mailOptions = {
@@ -52,12 +95,18 @@ app.post('/contact', function(req, res) {
 	        return console.log(error);
 	    }
 	    console.log('Message sent');
-		res.render('thank-you');
+		res.render('thank-you.html');
 	});
 });
+
 
 
 // start
 app.set('port', (process.env.PORT || 8000));
 app.listen(app.get('port'));
 console.log('Listening on port ' + app.get('port') + '...');
+
+// cms
+cms.init(process.env.db_url, {
+  'Post': models.Post
+});

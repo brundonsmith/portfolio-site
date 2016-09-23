@@ -1,31 +1,36 @@
 var mongoose = require('mongoose');
-//var slug = require('slug');
+
+function slug(originalString) {
+  var slug = originalString;
+  slug = slug.replace(/[.,\/#!$%\^&\*;:{}=\-_`\'\"~()]/g, '')
+  slug = slug.replace(/[\s\n\t]+/g, '-');
+  slug = slug.toLowerCase();
+  return slug;
+}
 
 var Schema = mongoose.Schema,
 		ObjectId = Schema.ObjectId;
 
 var Post = new Schema({
     isPublished   : { type: Boolean },
-    isExternalLink: { type: Boolean },
+    type          : { type: String, enum: ['project-link', 'blog-post', 'external-blog-post'] },
     date          : { type: Date, default: Date.now },
 		title					: { type: String, stringType: 'short' },
-    titleSlug			: { type: String, stringType: 'short' },
+    titleSlug			: { type: String, stringType: 'short', hidden: true },
     imageUrl      : { type: String, stringType: 'short' },
-    description  	: { type: String, stringType: 'long' },
 		body        	: { type: String, stringType: 'long' },
-    externalLink  : { type: String, stringType: 'short' }
+    externalUrl   : { type: String, stringType: 'short' }
 });
 
 Post = mongoose.model('Post', Post);
 
-Post.schema.pre('save', function(next) {
-	//this.titleSlug = slug(this.name).toLowerCase();
-	next();
-});
-Post.schema.pre('save', function(next) {
-  if(this.description.length == 0) {
-    this.description = this.body;
-  }
+Post.schema.pre('update', function(next) {
+  var newValues = this._update['$set']
+
+  this.update({
+    titleSlug: slug(newValues.title)
+  });
+
 	next();
 });
 

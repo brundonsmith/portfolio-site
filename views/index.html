@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 	<!-- Head -->
-	{{> head }}
+	{% include "head.html" %}
 	<head>
-		<title>Brandon Smith - Custom Websites</title>
+		<title>Brandon Smith - Web Developer</title>
 	</head>
 
 	<!-- Body -->
 	<body id="index">
 
 		<!-- Navigation -->
-  	{{> nav }}
+  	{% include "nav.html" %}
 
 		<!-- Hero -->
 		<div class="section hero" style="min-height:70vh;">
@@ -20,11 +20,18 @@
 					brandon smith
 				</h1>
 				<h2 class="fadein slidein-left staggered">
-					custom websites and css ninjutsu
+					web developer and css ninja
 				</h2>
-				<h4 class="fadein delay-1s">
-					because your business isn't a template.
-				</h4>
+				<div class="profiles">
+					<a class="profile-link fadein staggered" href="http://codepen.io/brundolf/" target="_blank">
+					  <i class="fa fa-codepen"></i>
+            <div>Codepen</div>
+					</a>
+					<a class="profile-link fadein staggered" href="https://github.com/brundonsmith" target="_blank">
+					  <i class="fa fa-github"></i>
+            <div>Github</div>
+					</a>
+				</div>
 			</div>
 		</div>
 
@@ -35,52 +42,24 @@
 			<!-- Local -->
 			<div class="container">
 				<h2>
-					examples of my work
+					what i've been up to
 				</h2>
 
 				<div class="projects-container">
+          {% for post in recentPosts %}
+            {% include "post-small.html" %}
+          {% endfor %}
+			  </div>
 
-          <a class="project-link fadein staggered" href="http://www.fiddlersgreenmusicshop.com/" target="_blank" style="
-															background-image:url('/img/fiddlers-green-thumbnail.png')">
-						<div class="overlay">
-							<span class="title">Fiddler's Green</span><br>
-							<span class="description">Irish music shop in Austin, TX</span>
-						</div>
-					</a>
-					<a class="project-link fadein staggered" href="http://catch.brandonsmith.ninja" target="_blank" style="
-															background-image:url('/img/catch-thumbnail.png')">
-						<div class="overlay">
-							<span class="title">Catch</span><br>
-							<span class="description">A web app for transferring files - no account required</span>
-						</div>
-					</a>
-					<a class="project-link fadein staggered" href="http://beansandbrews.brandonsmith.ninja" target="_blank" style="
-															background-image:url('/img/beans-and-brews-thumbnail.png')">
-						<div class="overlay">
-							<span class="title">Beans and Brews</span><br>
-							<span class="description">A splash site for a fictional Austin coffeehouse/bar</span>
-						</div>
-					</a>
-					<!--
-					<a class="project-link fadein staggered" href="#" style="
-															background-image:url('//material-design.storage.googleapis.com/publish/material_v_4/material_ext_publish/0B6Okdz75tqQsam1RaTNtSFZ1NXM/style_imagery_integration_scale2.png')">
-						<div class="overlay">
-							<span class="title">My Thing</span><br>
-							<span class="description">This is my thing</span>
-						</div>
-					</a>-->
-
-			   </div>
-
-			   <h3>
-				   <a class="more-projects" href="/projects">
-					   more projects <i class="fa fa-arrow-right"></i>
-				   </a>
-			   </h3>
+			  <h3>
+				  <a class="more-projects" href="/posts-and-projects">
+					  more posts <i class="fa fa-arrow-right"></i>
+				  </a>
+			  </h3>
 			</div>
 		</div>
 
 		<!-- Footer -->
-  	{{> footer }}
+  	{% include "footer.html" %}
 	</body>
 </html>
